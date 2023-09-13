@@ -5,6 +5,7 @@ using namespace std;
 
 int main() {
 
+
 	cout << "Enter a value for the weather today" << endl;
 	cout << "1 - Sunny and hot" << endl;
 	cout << "2 - Cloudy and mild" << endl;
@@ -128,6 +129,125 @@ int main() {
 		else {
 			cout << "No mortgage for you!" << endl;
 		}
+	}
+
+	cout << "Enter your year in school (1-4)" << endl;
+	int yearInSchool;
+	cin >> yearInSchool;
+
+	switch (yearInSchool) {
+	case 1:
+		cout << "Freshman" << endl;
+		break;
+	case 2:
+		cout << "Sophomore" << endl;
+		break;
+	case 3:
+		cout << "Junior" << endl;
+		break;
+	case 4:
+		cout << "Senior" << endl;
+		break;
+	default:
+		cout << "unknown year" << endl;
+	}
+
+	if (yearInSchool == 1) {
+		cout << "Freshman" << endl;
+	}
+	else if (yearInSchool == 2) {
+		cout << "Sophomore" << endl;
+	}
+	else if (yearInSchool == 3) {
+		cout << "Junior" << endl;
+	}
+	else if (yearInSchool == 4) {
+		cout << "Senior" << endl;
+	}
+	else {
+		cout << "unknown year" << endl;
+	}
+
+	cout << "Are you going to a party tonight?" << endl;
+	string answer;
+	cin >> answer;
+
+	bool partyOn;
+
+	if (answer == "Y" or answer == "y") {
+		partyOn = true;
+	}
+	else {
+		partyOn = false;
+	}
+
+	// compare just the first letter as upper case
+	if ( toupper(answer.at(0)) == 'Y' )
+
+	// same as above, but in 1 line because we're cool
+	partyOn = (answer == "Y" or answer == "y");
+
+
+	// don't use if ( partyOn == true )
+	if (partyOn) {
+		cout << "Have fun!" << endl;
+	}
+
+	string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+	cout << alphabet.at(4);
+	cout << alphabet.at(17);
+	cout << alphabet.at(8);
+	cout << alphabet.at(2);
+	cout << endl;
+
+	cout << "What letter index should we replace (0-25)" << endl;
+	int index;
+	cin >> index;
+	// assign indiviaul characters with ' ' , not " " 
+	alphabet.at(index) = '_';
+
+	cout << alphabet;
+
+	// THIS WILL CRASH! there is no index 4
+	// string myName = "Eric";
+	// cout << myName.at(4) << endl;
+
+	cout << "Enter your email address" << endl;
+	string email;
+	cin >> email;
+
+	if (email.find('@') == string::npos) {
+		cout << "That's not a valid email" << endl;
+	}
+	else {
+		cout << "Username is: " << email.substr(0, email.find('@')) << endl;
+		// size is length of the string, minus the username length, minus the at sign length
+		cout << "Domain is: " << email.substr(email.find('@') + 1, email.size() - email.find('@') - 1) << endl;
+	}
+
+	cout << "Are you tired?" << endl;
+	cin >> answer;
+	
+	string needsMoreCoffee;
+
+	if (answer == "yes") {
+		needsMoreCoffee = "of course";
+	}
+	else {
+		needsMoreCoffee = "it couldn't hurt";
+	}
+
+	// the same as above
+	needsMoreCoffee = answer == "yes" ? "of course" : "it couldn't hurt";
+
+
+	// really bad at percise floating point numbers - use deltas
+	if (1.0 / 3 == .3333333333) {
+		cout << "one third!" << endl;
+	}
+	else {
+		cout << "not a third?!?!" << endl;
 	}
 
 
