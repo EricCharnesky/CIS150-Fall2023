@@ -9,7 +9,7 @@ int main() {
 	cout << "Enter your name" << endl;
 	cin >> name;
 
-	
+
 	int numberOfGuests;
 	cout << "How many guests are coming to the party" << endl;
 	cin >> numberOfGuests;
@@ -40,7 +40,7 @@ int main() {
 		cout << name << ", How many guests actually came?" << endl;
 		cin >> guestsActuallyAttended;
 
-		double pizzasNeeded = 
+		double pizzasNeeded =
 			ceil((numberOfGuests * averageSlicesPerGuest) / slicesPerPizza);
 
 		double totalCost = pizzasNeeded * costPerPizza;
@@ -53,10 +53,10 @@ int main() {
 
 	}
 	else if (food == SANDWICHES) {
-
+		// todo
 	}
 	else if (food == DRINKS) {
-
+		// todo
 	}
 	else {
 		cout << "Sorry I can't help plan a party serving " << food << endl;
