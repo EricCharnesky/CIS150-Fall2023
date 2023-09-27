@@ -208,6 +208,11 @@ int main() {
 	int number = 1;
 	int lowestNumber = INT_MAX;
 
+	// please don't do this
+	for (; number != 0; ) {
+
+	}
+
 	while (number != 0) {
 		cout << "Enter a number, or 0 to stop" << endl;
 		cin >> number;
@@ -221,6 +226,56 @@ int main() {
 
 	cout << "highest number is " << highestNumber;
 	cout << "lowest number is " << lowestNumber;
+
+
+	for (int odd = 1; odd < 20; odd += 2) {
+		cout << odd << endl;
+	}
+
+	for (int start = 10; start > 0; start--) {
+		cout << start << endl;
+	}
+
+	cout << "Enter 1 for this, 2 for that, 3 for quit" << endl;
+	int uglyLoopInput;
+
+	cin >> uglyLoopInput;
+
+	// this is ugly according to Eric
+	while (true) {
+
+		cout << "Enter 1 for this, 2 for that, 3 for quit" << endl;
+		int uglyLoopInput;
+
+		cin >> uglyLoopInput;
+
+		if (uglyLoopInput == 3) {
+			break; // ends the loop immediately 
+		}
+
+		if (uglyLoopInput == 1) {
+			// this
+		}
+		else if (uglyLoopInput == 2) {
+			// that
+		}
+		
+	}
+	
+	for (int number = 1; number < 10; number++) {
+		if (number % 2 == 0) {
+			continue; // causes the loop to stop running 
+					  // and jump back to the top
+		}
+		cout << number << endl;
+	}
+
+	for (int countDown = 10; countDown > 0; countDown--) {
+		int number = countDown;
+		cout << number << endl;
+	}
+
+
 
 	return 0;
 }
