@@ -270,12 +270,33 @@ int main() {
 		cout << number << endl;
 	}
 
+	cout << number << "number variable from the main scope" << endl;
 	for (int countDown = 10; countDown > 0; countDown--) {
 		int number = countDown;
+		int anotherNumberInside = 10;
 		cout << number << endl;
 	}
+	// can't find a varaible created inside another scope
+	// cout << anotherNumberInside << endl;
 
+	enum Color { RED, ORANGE, YELLOW, GREEN, BLUE, PURPLE};
+	Color myColor;
+	Color yourColor;
 
+	myColor = BLUE;
+
+	cout << "What is your favorite color?" << endl;
+	string color;
+
+	cin >> color;
+
+	if (color == "red") {
+		yourColor = RED;
+	}
+
+	if (yourColor == myColor) {
+		cout << "We have the same favorite!" << endl;
+	}
 
 	return 0;
 }
