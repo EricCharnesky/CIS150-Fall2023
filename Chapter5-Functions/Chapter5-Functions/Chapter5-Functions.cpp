@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include <time.h>
+#include <cassert>
 
 using namespace std;
 
@@ -83,8 +84,18 @@ void displayWinner(string usersThrow, string computersThrow) {
     }
 }
 
+int getLargestNumber(int firstNumber, int secondNumber) {
+    if (firstNumber > secondNumber) {
+        return firstNumber;
+    } // lazy shortcut - else is redundant
+    return secondNumber;
+}
+
 int main()
 {
+    // Eric doesn't like these
+    assert(getLargestNumber(10, 20) == 20);
+
     int number = 42;
     cout << number;
 

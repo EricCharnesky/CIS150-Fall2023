@@ -56,7 +56,7 @@ void displayCrashOrLand(int xTilt, int yTilt)
 	}
 }
 
-void getLanderToSurface(int xTilt, int yTilt) {
+void getLanderToSurface(int& xTilt, int& yTilt) {
 	int distanceFromSurface = 10;
 
 	while (distanceFromSurface > 0) {
