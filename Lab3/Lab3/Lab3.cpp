@@ -33,20 +33,30 @@ string decrypt(string encryptedMessage, int stride = 1)
 	int remainder = encryptedMessage.size() % stride;
 
 	for (int letterInChunkIndex = 0; letterInChunkIndex < chunkLength; letterInChunkIndex++) {
-		for (int chunkIndex = 0; chunkIndex < stride; chunkIndex++) {
-			// int index = chunkIndex * chunkLength
+		int currentIndex = letterInChunkIndex;
+		int chunkNumber = 0;
+		while (currentIndex < encryptedMessage.size()) {
+			message += encryptedMessage.at(currentIndex);
+			currentIndex += chunkLength;
+			if (chunkNumber < remainder) {
+				currentIndex++;
+			}
+			chunkNumber++;
 		}
 	}
-	
-	
 
-
-	return encryptedMessage;
+	int index = chunkLength;
+	for (int lettersRemaining = 0; lettersRemaining < remainder; lettersRemaining++) {
+		message += encryptedMessage.at(index);
+		index += chunkLength + 1;
+	}
+	
+	return message;
 }
 
 int main()
 {
-	string message = "Happy Monday!";
+	string message = "Happy Wednesday!";
 
 	string encryptedMessage = encrypt(message, 3);
 
