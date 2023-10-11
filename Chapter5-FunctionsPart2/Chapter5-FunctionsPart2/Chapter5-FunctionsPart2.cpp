@@ -10,6 +10,76 @@ const int myFavoriteNumber = 777;
 // function prototype
 int addTenToNumber(int& number);
 
+// bad fib - really really slow - adds a bunch of 1s
+int fibonacci(int nth) {
+    // this might be overkill
+    if (nth <= 0) {
+        return 0;
+    }
+    else if (nth <= 2) {
+        return 1;
+    }
+    return fibonacci(nth - 1) + fibonacci(nth - 2);
+}
+
+int _fibonacciBetterRecursion(int nth, int currentNth, int previous, int current) {
+    if (nth == currentNth) {
+        return current;
+    }
+    return _fibonacciBetterRecursion(nth, currentNth + 1, current, current + previous);
+}
+
+int fibonacciBetterRecursion(int nth) {
+    if (nth <= 0) {
+        return 0;
+    }
+    else if (nth <= 2) {
+        return 1;
+    }
+    return _fibonacciBetterRecursion(nth, 3, 1, 2);
+}
+
+
+
+int fibonacciIterative(int nth) {
+    // this might be overkill
+    if (nth <= 0) {
+        return 0;
+    }
+    else if (nth <= 2) {
+        return 1;
+    }
+    int currentNth = 3;
+    int current = 2;
+    int previous = 1;
+
+    while (currentNth != nth) {
+        int next = current + previous;
+        previous = current;
+        current = next;
+        currentNth++;
+    }
+
+    return current;
+}
+
+void countDown(int number) {
+    cout << number << endl;
+    if (number > 0) {
+        countDown(number - 1);
+    }
+    else {
+        cout << "Blast off!" << endl;
+    }
+}
+
+// infinite recursion
+void printIsItOverYet()
+{
+    cout << "Is it over yet?!?" << endl;
+    printIsItOverYet();
+}
+
 // overloaded - same name, different parameters
 void printDate(string month, string day, string year = "2023") {
     cout << "American format " << month << "/" << day << "/" << year << endl;
@@ -45,6 +115,13 @@ bool findXInterceptsForQuadratic(double a, double b, double c,
 
 int main()
 {
+    for (int nth = 1; nth < 47; nth++) {
+        cout << nth << ": " << fibonacciBetterRecursion(nth) << endl;
+    }
+
+    countDown(10);
+    //printIsItOverYet();
+
     printDate(10, 9);
     printDate(7, 7, 2007);
 
