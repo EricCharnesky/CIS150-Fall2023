@@ -21,11 +21,19 @@ string ProduceSavingsTable(double startAmount, double apr, int numYears, int mon
     // Convert APR to monthly percentage rate and decimal number
     double mpr = apr / 12 * 0.01;
 
+    ofstream outputFile;
+
+    outputFile.open("retirement.txt");
+
+    if (!outputFile.is_open()) {
+        return "ERROR";
+    }
+
     // Display 2 decimal places
-    outSS << fixed << setprecision(2);
+    outputFile << fixed << setprecision(2);
 
     // Table heading
-    outSS << setw(YEAR_COL_WIDTH) << "Year"
+    outputFile << setw(YEAR_COL_WIDTH) << "Year"
         << setw(BALANCE_COL_WIDTH) << "Balance" << endl;
 
     // Calculate interest and ending balance for each month
@@ -35,13 +43,15 @@ string ProduceSavingsTable(double startAmount, double apr, int numYears, int mon
 
         // Only output year number and balance at the end of the year
         if (month % 12 == 0) {
-            outSS << setw(YEAR_COL_WIDTH) << month / 12
+            outputFile << setw(YEAR_COL_WIDTH) << month / 12
                 << setw(BALANCE_COL_WIDTH) << balance << endl;
         }
     }
 
+    outputFile.close();
+
     // Return the table as a string
-    return outSS.str();
+    return "please see retirement.txt";
 }
 
 int main()
