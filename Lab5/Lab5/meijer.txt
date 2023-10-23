@@ -1,0 +1,9 @@
+apples
+bananas
+cucumbers
+donuts
+eggplant
+fried chicken
+grapes
+hot dogs
+ice cream
