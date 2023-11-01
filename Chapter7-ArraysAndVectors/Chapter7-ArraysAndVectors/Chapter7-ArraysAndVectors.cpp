@@ -1,12 +1,100 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    char jeb[4];
+    jeb[0] = 'J';
+    jeb[1] = 'e';
+    jeb[2] = 'b';
+    //jeb[3] = '\0';
+
+    char name[15];
+    name[0] = 'E';
+    name[1] = 'r';
+    name[2] = 'i';
+    name[3] = 'c';
+    name[4] = '\0';
+
+   
+
+
+    cout << name << endl;
+    cout << jeb << endl;
+
+    const int MY_NUMBERS_SIZE = 6;
+    // [ ] are for arrays
+    int myNumbers[MY_NUMBERS_SIZE];
+
+    myNumbers[0] = 7;
+    myNumbers[1] = 13;
+    myNumbers[2] = 21;
+    myNumbers[3] = 9;
+    myNumbers[4] = 5;
+    myNumbers[5] = 15;
+    
+    int sizeOfMyNumbers = sizeof(myNumbers);
+    int sizeOfSingleValue = sizeof(myNumbers[0]);
+
+    int numberOfValuesInMyNumbers = sizeOfMyNumbers / sizeOfSingleValue;
+
+    int sum = 0;
+    for (int index = 0; index < MY_NUMBERS_SIZE; index++) {
+        sum += myNumbers[index];
+    }
+
+    cout << "Sum of array values: " << sum << endl;
+
+    // to make a copy, create at the right size
+    int myOtherNumbers[6];
+
+    // copy each value
+    for (int index = 0; index < MY_NUMBERS_SIZE; index++) {
+        myOtherNumbers[index] = myNumbers[index];
+    } 
+
+    vector<int> lottoTicket(6); // creates a vector of 6 0s
+    lottoTicket.at(0) = 1;
+    lottoTicket.at(1) = 3;
+    lottoTicket.at(2) = 5;
+    lottoTicket.at(3) = 7;
+    lottoTicket.at(4) = 9;
+    lottoTicket.at(5) = 11;
+
+    // fails unless to presize the vector
+    vector<int> randomTicket;
+
+    // make copies with vectors
+    randomTicket = lottoTicket;
+
+    for (int number = 0; number < 5; number++) {
+        randomTicket.at(number) = (rand() % 69 + 1);
+    }
+    randomTicket.at(5) = (rand() % 26 + 1);
+
+    /*for (int number = 0; number < 5; number++) {
+        randomTicket.push_back(rand() % 69 + 1);
+    }*/
+    
+    randomTicket.push_back(rand() % 26 + 1);
+
+    cout << "Your easy pick numbers are: "
+        << randomTicket.at(0) << " "
+        << randomTicket.at(1) << " "
+        << randomTicket.at(2) << " "
+        << randomTicket.at(3) << " "
+        << randomTicket.at(4) << " "
+        << randomTicket.at(5) << endl;
+
+    
+
+    for (int number : lottoTicket) {
+        cout << number << endl;
+    }
 
     vector<int> numbers;
 
@@ -43,6 +131,12 @@ int main()
     double average = total / numbers.size();
 
     int maxScore = INT_MIN;
+
+    for (int index = 0; index < numbers.size(); index++) {
+        if (numbers.at(index) > maxScore) {
+            maxScore = numbers.at(index);
+        }
+    }
 
     // read only
     for (int score : numbers) {
