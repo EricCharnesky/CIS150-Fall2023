@@ -5,8 +5,47 @@
 
 using namespace std;
 
+long long sumOfVectorValues(vector<int> &numbers) {
+    long long sum = 0;
+    
+    for (int index = 0; index < numbers.size(); index++) {
+        sum += numbers.at(index);
+        numbers.at(index)--;
+    }
+
+    return sum;
+}
+
+int sumOfValues(int numbers[], int numberOfValues) {
+    //int numberOfValues = sizeof(numbers) / sizeof(numbers[0]);
+
+    int sum = 0;
+
+    for (int index = 0; index < numberOfValues; index++) {
+        sum += numbers[index];
+    }
+
+    return sum;
+}
+
 int main()
 {
+    vector<vector<char>> board(3);
+    for (int row = 0; row < 3; row++) {
+        board.at(row) = vector<char>(3);
+    }
+    
+
+
+
+    vector<int> randomNumbers(1000000);
+    for (int index = 0; index < randomNumbers.size(); index++) {
+        randomNumbers.at(index) = rand();
+    }
+
+
+    cout << "The sum of a bunch of random numbers is: " << sumOfVectorValues(randomNumbers) << endl;
+
     char jeb[4];
     jeb[0] = 'J';
     jeb[1] = 'e';
@@ -36,6 +75,8 @@ int main()
     myNumbers[3] = 9;
     myNumbers[4] = 5;
     myNumbers[5] = 15;
+
+    cout << "The sum of values in myNumbers: " << sumOfValues(myNumbers, 7) << endl;
     
     int sizeOfMyNumbers = sizeof(myNumbers);
     int sizeOfSingleValue = sizeof(myNumbers[0]);
@@ -64,6 +105,8 @@ int main()
     lottoTicket.at(3) = 7;
     lottoTicket.at(4) = 9;
     lottoTicket.at(5) = 11;
+
+    cout << "Sum of values in lotto ticket vector:  " << sumOfVectorValues(lottoTicket) << endl;
 
     // fails unless to presize the vector
     vector<int> randomTicket;
