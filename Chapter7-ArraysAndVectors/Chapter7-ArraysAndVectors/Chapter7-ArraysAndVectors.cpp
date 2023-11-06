@@ -87,11 +87,29 @@ bool isGameOver(vector<vector<char>> const &board) {
     return isGameTied(board) || threeInARow(board);
 }
 
+void printBoard(vector<vector<char>>& board) {
+    cout << board.at(0).at(0) << "|" << board.at(0).at(1) << "|" << board.at(0).at(2) << endl;
+    cout << "-----" << endl;
+    cout << board.at(1).at(0) << "|" << board.at(1).at(1) << "|" << board.at(1).at(2) << endl;
+    cout << "-----" << endl;
+    cout << board.at(2).at(0) << "|" << board.at(2).at(1) << "|" << board.at(2).at(2) << endl;
+}
+
 void makeMove(char currentPlayer, vector<vector<char>> &board) {
-    // print board
-    // get row and index
-    // check for valid
-    // mark board
+    printBoard(board);
+    cout << currentPlayer << "'s turn, please enter your row and column index to mark" << endl;
+    int rowIndex;
+    int columnIndex;
+    cin >> rowIndex >> columnIndex;
+
+    while (rowIndex < 0 || rowIndex > 2
+        || columnIndex < 0 || columnIndex > 2
+        || board.at(rowIndex).at(columnIndex) != ' ') {
+        cout << "Invalid location, please enter your row and column index to mark" << endl;
+        cin >> rowIndex >> columnIndex;
+    }
+
+    board.at(rowIndex).at(columnIndex) = currentPlayer;
 }
 
 int main()
@@ -125,7 +143,9 @@ int main()
             currentPlayer = 'X';
         }
     }
-        
+    
+    printBoard(board);
+    cout << "Game over!" << endl;
     
 
 
