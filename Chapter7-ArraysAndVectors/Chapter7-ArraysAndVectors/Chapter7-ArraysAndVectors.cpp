@@ -28,12 +28,104 @@ int sumOfValues(int numbers[], int numberOfValues) {
     return sum;
 }
 
+bool isGameTied(vector<vector<char>> const& board) {
+    for (int rowIndex = 0; rowIndex < board.size(); rowIndex++) {
+        for (int columnIndex = 0; columnIndex < board.at(rowIndex).size(); columnIndex++) {
+            if (board.at(rowIndex).at(columnIndex) == ' ') {
+                return false;
+            }
+        }
+    }
+    return true;
+    
+    for (vector<char> row : board) {
+        for (char column : row) {
+            if (column == ' ') {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool threeInARowDiagonally(vector<vector<char>> const& board) {
+    return board.at(1).at(1) != ' ' and
+        ( (board.at(1).at(1) == board.at(0).at(0) and
+        board.at(1).at(1) == board.at(2).at(2) ) or
+        (board.at(1).at(1) == board.at(2).at(0) and
+        board.at(1).at(1) == board.at(0).at(2)));
+
+}
+
+bool threeInARowVertically(vector<vector<char>> const& board) {
+    for (int columnIndex = 0; columnIndex < board.size(); columnIndex++) {
+        if (board.at(0).at(columnIndex) != ' ' and
+            board.at(0).at(columnIndex) == board.at(1).at(columnIndex) and
+            board.at(0).at(columnIndex) == board.at(2).at(columnIndex))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool threeInARowHoriztonally(vector<vector<char>> const& board) {
+    for (vector<char> row : board) {
+        if (row.at(0) != ' ' and row.at(0) == row.at(1) and row.at(0) == row.at(2)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool threeInARow(vector<vector<char>> const& board) {
+    return threeInARowHoriztonally(board) || threeInARowVertically(board)
+        || threeInARowDiagonally(board);
+}
+
+bool isGameOver(vector<vector<char>> const &board) {
+    return isGameTied(board) || threeInARow(board);
+}
+
+void makeMove(char currentPlayer, vector<vector<char>> &board) {
+    // print board
+    // get row and index
+    // check for valid
+    // mark board
+}
+
 int main()
 {
     vector<vector<char>> board(3);
     for (int row = 0; row < 3; row++) {
         board.at(row) = vector<char>(3);
+        for (int column = 0; column < 3; column++) {
+            board.at(row).at(column) = ' ';
+        }
     }
+
+    vector<vector<char>> easyBoard = {
+        { ' ', ' ', ' '},
+        { ' ', ' ', ' '},
+        { ' ', ' ', ' '}
+    };
+
+    char currentPlayer = 'X';
+
+    // while not game over
+        // get a move
+        // next player
+
+    while (!isGameOver(board)) {
+        makeMove(currentPlayer, board);
+        if (currentPlayer == 'X') {
+            currentPlayer = 'O';
+        }
+        else {
+            currentPlayer = 'X';
+        }
+    }
+        
     
 
 
