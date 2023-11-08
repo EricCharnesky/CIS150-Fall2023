@@ -1,13 +1,16 @@
 // https://umgpt.umich.edu/
 // prompt "write a c++ program that lets a user play checkers again another player"
+// prompt I'm getting this error Severity	Code	Description	Project	File	Line	Suppression State
+//          Error(active)	E0513	a value of type "char *" cannot be assigned to an entity of type "char"	CheckersGPT	C : \Users\EricC\OneDrive\Documents\GitHub\CIS150 - Fall2023\CheckersGPT\CheckersGPT\CheckersGPT.cpp	35
+
 
 #include <iostream>
 using namespace std;
 
 const int BOARD_SIZE = 8;
 char board[BOARD_SIZE][BOARD_SIZE];
-char player1[] = ("X");
-char player2[] = ("O");
+char player1=  'X';
+char player2 = 'O';
 
 void printBoard(char board[BOARD_SIZE][BOARD_SIZE]) {
     for (int i = 0; i < BOARD_SIZE; i++) {
