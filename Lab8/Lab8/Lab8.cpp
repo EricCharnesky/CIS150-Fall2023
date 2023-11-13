@@ -54,14 +54,17 @@ int main()
 {
     vector<Item> items;
 
-    Item item;
-    item.setName("whatever");
-    item.setQuantity(2);
-    item.setUnitPrice(1.5);
+    for (int itemNumber = 1; itemNumber <= 3; itemNumber++) {
+        Item item;
+        item.setName("whatever");
+        item.setQuantity(itemNumber);
+        item.setUnitPrice(1.5);
 
-    items.push_back(item);
+        items.push_back(item);
+    }
 
     double grandTotal = 0;
+
     for (Item item : items) {
         cout << item.getQuantity() << " " << item.getName() << " @ $"
             << item.getUnitPrice() << " - " << item.getTotalPrice() << endl;
