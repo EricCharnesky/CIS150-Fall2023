@@ -95,6 +95,19 @@ void printBoard(vector<vector<char>>& board) {
     cout << board.at(2).at(0) << "|" << board.at(2).at(1) << "|" << board.at(2).at(2) << endl;
 }
 
+void makeCheckerMove(char currentPlayer, vector<vector<char>>& board) {
+    // check for valid move
+    // get row and column for piece to move
+    // get row and column for destination
+    // make sure they are within the board
+    // make sure the piece is the current players piece
+    // -either the destination is within range and empty
+    // -or the destination jumps over an ememy checker and is empty
+    // if valid - replace the current checker with ' '
+    // if jumping - remove enemy piece
+    // put currentPlayer piece on destination
+}
+
 void makeMove(char currentPlayer, vector<vector<char>> &board) {
     printBoard(board);
     cout << currentPlayer << "'s turn, please enter your row and column index to mark" << endl;
@@ -114,6 +127,56 @@ void makeMove(char currentPlayer, vector<vector<char>> &board) {
 
 int main()
 {
+    const int BOARD_SIZE = 8;
+    char checkersBoard[BOARD_SIZE][BOARD_SIZE];
+
+    for (int rowIndex = 0; rowIndex < BOARD_SIZE; rowIndex++) {
+        for (int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++) {
+            checkersBoard[rowIndex][columnIndex] = ' ';
+        }
+    }
+
+    for (int rowIndex = 0; rowIndex < 3; rowIndex++) {
+        for (int columnIndex = rowIndex % 2; columnIndex < BOARD_SIZE; columnIndex += 2) {
+            checkersBoard[rowIndex][columnIndex] = 'W';
+        }
+    }
+
+    for (int rowIndex = 5; rowIndex < BOARD_SIZE; rowIndex++) {
+        for (int columnIndex = rowIndex % 2; columnIndex < BOARD_SIZE; columnIndex += 2) {
+            checkersBoard[rowIndex][columnIndex] = 'B';
+        }
+    }
+
+    for (int rowIndex = 0; rowIndex < BOARD_SIZE; rowIndex++) {
+        for (int columnIndex = 0; columnIndex < BOARD_SIZE; columnIndex++) {
+            cout << checkersBoard[rowIndex][columnIndex];
+        }
+        cout << endl;
+    }
+
+
+
+    cout << "How many numbers do you want to enter?" << endl;
+    int sizeOfNumbers;
+    cin >> sizeOfNumbers;
+    int numbersToEnter[100]; // oversize to leave room for the users numbers
+
+
+
+
+    vector<vector<char>> maze;
+
+    for (int row = 0; row < sizeOfNumbers; row++) {
+        // creates an empty row
+        maze.push_back(vector<char>());
+        for (int column = 0; column < sizeOfNumbers; column++) {
+            // adds each column in the empty row as ' '
+            maze.at(row).push_back(' ');
+        }
+    }
+
+
     vector<vector<char>> board(3);
     for (int row = 0; row < 3; row++) {
         board.at(row) = vector<char>(3);
